@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7f4" />
+    <meta
+      name="description"
+      content="Find scholarships that fit your profile, track applications, and stay ahead of deadlines."
+    />
+    <title>ScholarMatch — Find funding that fits</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="auth-shell" id="auth-screen">
+      <a class="brand auth-brand" href="/" aria-label="ScholarMatch home">
+        <span class="brand-mark" aria-hidden="true">s</span>
+        <span>scholar<span class="brand-light">match</span></span>
+      </a>
+      <section class="auth-card">
+        <div class="eyebrow"><span class="live-dot"></span> A BETTER WAY TO FIND FUNDING</div>
+        <h1 id="auth-heading">Welcome back</h1>
+        <p class="page-intro" id="auth-description">Sign in to find scholarships that fit your journey.</p>
+        <div class="auth-tabs" role="tablist" aria-label="Account options">
+          <button type="button" class="auth-tab active" data-auth-mode="login" role="tab" aria-selected="true">Sign in</button>
+          <button type="button" class="auth-tab" data-auth-mode="register" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <form id="auth-form">
+          <label class="field" id="auth-name-field" hidden>Full name <span>*</span><input name="fullName" autocomplete="name" maxlength="100" /></label>
+          <label class="field">Email address <span>*</span><input name="email" type="email" autocomplete="email" required maxlength="254" /></label>
+          <label class="field">Password <span>*</span><input name="password" type="password" autocomplete="current-password" required minlength="12" maxlength="128" /></label>
+          <p class="auth-hint" id="auth-password-hint" hidden>Use at least 12 characters for your password.</p>
+          <p class="auth-error" id="auth-error" role="alert"></p>
+          <button class="button button-primary auth-submit" id="auth-submit" type="submit">Sign in <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="privacy-note"><span aria-hidden="true">▣</span> Your account and uploaded documents are stored privately by this application.</p>
+      </section>
+    </main>
+
+    <div class="app-shell" id="app-shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="ScholarMatch home">
+          <span class="brand-mark" aria-hidden="true">s</span>
+          <span>scholar<span class="brand-light">match</span></span>
+        </a>
+
+        <div class="workspace-label">WORKSPACE</div>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <button class="nav-link active" data-view="overview">
+            <span class="nav-icon" aria-hidden="true">◫</span> Overview
+          </button>
+          <button class="nav-link" data-view="scholarships">
+            <span class="nav-icon" aria-hidden="true">⌕</span> Find scholarships
+            <span class="nav-count" id="match-count">0</span>
+          </button>
+          <button class="nav-link" data-view="applications">
+            <span class="nav-icon" aria-hidden="true">▤</span> My applications
+          </button>
+          <button class="nav-link" data-view="documents">
+            <span class="nav-icon" aria-hidden="true">▧</span> My documents
+          </button>
+        </nav>
+
+        <div class="workspace-label admin-label">MANAGE</div>
+        <nav class="primary-nav" aria-label="Administration">
+          <button class="nav-link" data-view="admin">
+            <span class="nav-icon" aria-hidden="true">◉</span> Verification desk
+            <span class="nav-count nav-count-dark" id="queue-count">0</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="help-card">
+            <div class="help-icon" aria-hidden="true">✦</div>
+            <strong>A little help goes a long way.</strong>
+            <p>Keep your profile up to date to get more accurate matches.</p>
+            <button class="text-button" data-view="profile">Complete your profile <span aria-hidden="true">→</span></button>
+          </div>
+          <button class="profile-mini" data-view="profile">
+            <span class="avatar" id="sidebar-avatar">JD</span>
+            <span class="profile-mini-copy"><strong id="sidebar-name">Jordan Davis</strong><small>Student account</small></span>
+            <span class="more-dots" aria-hidden="true">···</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Workspace</span><span class="crumb-divider">/</span><strong id="page-title">Overview</strong></div>
+          <div class="topbar-actions">
+            <span class="demo-badge"><span aria-hidden="true">●</span> Secure workspace</span>
+            <button class="icon-button notification-button" id="notification-button" aria-label="View deadline reminders">
+              <span aria-hidden="true">♧</span><i id="notification-dot" class="notification-dot"></i>
+            </button>
+            <button class="top-avatar" data-view="profile" id="top-avatar" aria-label="Open student profile">JD</button>
+            <button class="button button-outline signout-button" id="signout-button" type="button">Sign out</button>
+          </div>
+        </header>
+
+        <div class="content-wrap">
+          <section class="view active" id="view-overview">
+            <div class="welcome-row">
+              <div>
+                <div class="eyebrow"><span class="live-dot"></span> YOUR FUNDING JOURNEY</div>
+                <h1>Good morning, <span id="welcome-name">Jordan</span> <span class="wave" aria-hidden="true">✳</span></h1>
+                <p class="page-intro">Your next opportunity might be closer than you think.</p>
+              </div>
+              <button class="button button-primary" data-view="scholarships"><span aria-hidden="true">＋</span> Explore scholarships</button>
+            </div>
+
+            <div class="stats-grid">
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Great-fit matches</span><span class="stat-icon mint" aria-hidden="true">✳</span></div>
+                <div class="stat-value" id="stat-matches">0</div>
+                <div class="stat-foot"><span class="stat-positive">↑ Personalized</span> for your profile</div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Applications in progress</span><span class="stat-icon lilac" aria-hidden="true">▤</span></div>
+                <div class="stat-value" id="stat-applications">0</div>
+                <div class="stat-foot">Keep your momentum going</div>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Upcoming deadlines</span><span class="stat-icon peach" aria-hidden="true">◷</span></div>
+                <div class="stat-value" id="stat-deadlines">0</div>
+                <div class="stat-foot">In the next 30 days</div>
+              </article>
+            </div>
+
+            <div class="dashboard-grid">
+              <section class="panel matches-panel">
+                <div class="panel-heading">
+                  <div><div class="eyebrow">PICKED FOR YOU</div><h2>Scholarships to explore</h2></div>
+                  <button class="text-button" data-view="scholarships">See all <span aria-hidden="true">→</span></button>
+                </div>
+                <div class="compact-scholarships" id="featured-scholarships"></div>
+              </section>
+              <aside class="right-column">
+                <section class="panel deadlines-panel">
+                  <div class="panel-heading">
+                    <div><div class="eyebrow">DON’T MISS OUT</div><h2>Coming up</h2></div>
+                    <span class="calendar-icon" aria-hidden="true">▦</span>
+                  </div>
+                  <div id="upcoming-deadlines" class="deadline-list"></div>
+                </section>
+                <section class="profile-progress">
+                  <div class="progress-top"><span>PROFILE STRENGTH</span><strong id="profile-percent">0%</strong></div>
+                  <div class="progress-track"><span id="profile-progress-bar"></span></div>
+                  <p>A complete profile helps us find the right opportunities for you.</p>
+                  <button class="text-button" data-view="profile">Review your profile <span aria-hidden="true">→</span></button>
+                </section>
+              </aside>
+            </div>
+            <div class="demo-note"><span aria-hidden="true">ⓘ</span> Keep your details current. Scholarships have their own eligibility and document requirements.</div>
+          </section>
+
+          <section class="view" id="view-scholarships">
+            <div class="section-header">
+              <div><div class="eyebrow"><span class="live-dot"></span> YOUR NEXT OPPORTUNITY</div><h1>Find your scholarship</h1><p class="page-intro">A shortlist built around your course, grades, and eligibility.</p></div>
+            </div>
+            <div class="match-summary">
+              <span class="match-sparkle" aria-hidden="true">✳</span>
+              <div><strong id="match-summary-title">We found matches for you</strong><p id="match-summary-copy">Update your profile to make these recommendations even more relevant.</p></div>
+              <button class="button button-outline" data-view="profile">Edit profile</button>
+            </div>
+            <div class="filter-row">
+              <label class="search-box"><span aria-hidden="true">⌕</span><input id="scholarship-search" type="search" placeholder="Search scholarships..." aria-label="Search scholarships" /></label>
+              <label class="select-wrap"><span class="sr-only">Filter by eligibility</span><select id="eligibility-filter"><option value="all">All scholarships</option><option value="eligible">Eligible for me</option><option value="ineligible">Explore all</option></select></label>
+              <label class="select-wrap"><span class="sr-only">Sort scholarships</span><select id="sort-scholarships"><option value="match">Best match</option><option value="deadline">Deadline soon</option><option value="amount">Award amount</option></select></label>
+            </div>
+            <div class="scholarship-list" id="scholarship-list"></div>
+          </section>
+
+          <section class="view" id="view-applications">
+            <div class="section-header">
+              <div><div class="eyebrow"><span class="live-dot"></span> YOUR PROGRESS</div><h1>My applications</h1><p class="page-intro">Every step, from your first application to the final decision.</p></div>
+              <button class="button button-primary" data-view="scholarships">＋ Find another scholarship</button>
+            </div>
+            <div class="application-summary" id="application-summary"></div>
+            <div class="panel application-panel">
+              <div class="panel-heading"><div><div class="eyebrow">APPLICATION TRACKER</div><h2>Your applications</h2></div><span class="table-caption">Status updates appear here</span></div>
+              <div id="application-list"></div>
+            </div>
+          </section>
+
+          <section class="view" id="view-profile">
+            <div class="section-header">
+              <div><div class="eyebrow"><span class="live-dot"></span> YOUR DETAILS</div><h1>Student profile</h1><p class="page-intro">Your personal, family, and education details are used to check scholarship eligibility.</p></div>
+            </div>
+            <div class="profile-layout">
+              <form class="panel profile-form" id="profile-form">
+                <div class="form-section">
+                  <div class="panel-heading"><div><div class="eyebrow">PERSONAL DETAILS</div><h2>About you</h2></div><span class="form-required">* Required to apply</span></div>
+                  <div class="form-grid">
+                    <label class="field full-field">Full name <span>*</span><input name="fullName" required maxlength="100" autocomplete="name" /></label>
+                    <label class="field">Account email<input id="profile-email" type="email" readonly /></label>
+                    <label class="field">Phone number <span>*</span><input name="phone" type="tel" required maxlength="20" autocomplete="tel" /></label>
+                    <label class="field">Date of birth <span>*</span><input name="dateOfBirth" type="date" required /></label>
+                    <label class="field">Gender <span>*</span><select name="gender" required><option value="">Select an option</option><option>Woman</option><option>Man</option><option>Non-binary</option><option>Prefer not to say</option><option>Self-describe</option></select></label>
+                    <label class="field full-field">Address <span>*</span><input name="address" required maxlength="500" autocomplete="street-address" /></label>
+                    <label class="field">City / district <span>*</span><input name="city" required maxlength="160" autocomplete="address-level2" /></label>
+                    <label class="field">State / territory <span>*</span><select name="state" required><option value="">Select your state</option><option>Andhra Pradesh</option><option>Delhi</option><option>Gujarat</option><option>Karnataka</option><option>Kerala</option><option>Maharashtra</option><option>Rajasthan</option><option>Tamil Nadu</option><option>Uttar Pradesh</option><option>West Bengal</option><option>Other</option></select></label>
+                    <label class="field">Postal code <span>*</span><input name="postalCode" required maxlength="12" autocomplete="postal-code" /></label>
+                  </div>
+                </div>
+                <div class="form-section">
+                  <div class="panel-heading"><div><div class="eyebrow">FAMILY DETAILS</div><h2>Household information</h2></div></div>
+                  <div class="form-grid">
+                    <label class="field">Father / guardian name <span>*</span><input name="fatherName" required maxlength="160" /></label>
+                    <label class="field">Mother / guardian name <span>*</span><input name="motherName" required maxlength="160" /></label>
+                    <label class="field">Family members <span>*</span><input name="familyMembers" type="number" min="1" max="30" step="1" required /></label>
+                    <label class="field">Parent / guardian occupation<input name="parentOccupation" maxlength="160" /></label>
+                    <label class="field full-field">Annual family income (₹) <span>*</span><input name="annualIncome" type="number" min="0" max="1000000000" step="1" required placeholder="Total yearly household income" /><small class="field-hint">Enter the approximate total income for your household for one year.</small></label>
+                  </div>
+                </div>
+                <div class="form-section">
+                  <div class="panel-heading"><div><div class="eyebrow">EDUCATION DETAILS</div><h2>Your studies</h2></div></div>
+                  <div class="form-grid">
+                    <label class="field">Education level <span>*</span><select name="educationLevel" required><option value="">Select a level</option><option>Undergraduate</option><option>Postgraduate</option><option>Diploma</option><option>Other</option></select></label>
+                    <label class="field">Course of study <span>*</span><select name="course" required><option value="">Select a course</option><option>Computer Science</option><option>Engineering</option><option>Business</option><option>Arts & Humanities</option><option>Medicine</option><option>Science</option><option>Law</option><option>Education</option><option>Other</option></select></label>
+                    <label class="field full-field">College / institution name <span>*</span><input name="institution" required maxlength="160" /></label>
+                    <label class="field">Current year <span>*</span><select name="currentYear" required><option value="">Select your year</option><option>1st year</option><option>2nd year</option><option>3rd year</option><option>4th year</option><option>5th year</option><option>Other</option></select></label>
+                    <label class="field">Academic year of study<input name="enrollmentYear" type="number" min="1990" max="2100" step="1" /></label>
+                    <label class="field">Expected graduation year<input name="expectedGraduation" type="number" min="1990" max="2100" step="1" /></label>
+                    <label class="field">Current marks (%) <span>*</span><input name="marks" type="number" min="0" max="100" step="0.1" required /></label>
+                  </div>
+                </div>
+                <div class="form-footer"><span id="profile-save-message" role="status"></span><button class="button button-primary" type="submit">Save profile <span aria-hidden="true">→</span></button></div>
+              </form>
+              <aside class="profile-tip">
+                <span class="tip-icon" aria-hidden="true">✦</span>
+                <h3>Your profile, your possibilities.</h3>
+                <p>We compare your details against each scholarship’s criteria. Only you and an authorized administrator can view your profile.</p>
+                <div class="tip-divider"></div>
+                <strong>What makes a strong profile?</strong>
+                <ul><li>Keep your annual family income up to date</li><li>Enter your current course and marks</li><li>Upload legible education proofs and fee receipts</li></ul>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view" id="view-documents">
+            <div class="section-header">
+              <div><div class="eyebrow"><span class="live-dot"></span> PRIVATE DOCUMENTS</div><h1>My documents</h1><p class="page-intro">Upload supporting documents for your scholarship applications.</p></div>
+            </div>
+            <div class="admin-banner privacy-banner"><span aria-hidden="true">▣</span><span><strong>Private and protected.</strong> Files are stored outside the public website and can only be accessed by you and authorized administrators. PDF, JPEG, or PNG · 5 MB maximum per file.</span></div>
+            <div class="document-upload-grid">
+              <form class="panel document-upload-card" id="document-upload-form">
+                <div class="panel-heading"><div><div class="eyebrow">ADD A DOCUMENT</div><h2>Upload a file</h2></div><span class="tip-icon" aria-hidden="true">＋</span></div>
+                <label class="field">Document type <span>*</span><select name="category" required><option value="">Select a document type</option><option value="academic_record">Academic marksheet / transcript</option><option value="enrollment_certificate">College enrollment / bonafide certificate</option><option value="fee_receipt">College fee payment receipt</option><option value="income_certificate">Family income certificate</option><option value="id_proof">Government ID proof</option></select></label>
+                <label class="field">Choose file <span>*</span><input name="document" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required /><small class="field-hint">Only use documents you are authorized to share. Do not upload originals containing unrelated sensitive information.</small></label>
+                <p class="auth-error" id="upload-error" role="alert"></p>
+                <button class="button button-primary" type="submit">Upload for verification <span aria-hidden="true">→</span></button>
+              </form>
+              <aside class="profile-tip"><span class="tip-icon" aria-hidden="true">✓</span><h3>Document review</h3><p>Each upload is private until you choose to share it with a scholarship application. An administrator reviews the file and marks it verified, rejected, or needing more information.</p><div class="tip-divider"></div><strong>Accepted file types</strong><ul><li>PDF documents</li><li>JPEG or PNG images</li><li>Maximum file size: 5 MB</li></ul></aside>
+            </div>
+            <div class="panel application-panel document-panel"><div class="panel-heading"><div><div class="eyebrow">YOUR UPLOADS</div><h2>Document status</h2></div></div><div id="document-list"></div></div>
+          </section>
+
+          <section class="view" id="view-admin">
+            <div class="section-header">
+              <div><div class="eyebrow"><span class="live-dot"></span> ADMINISTRATION</div><h1>Verification desk</h1><p class="page-intro">Review applications and verify students’ supporting documents.</p></div>
+            </div>
+            <div class="admin-banner"><span aria-hidden="true">ⓘ</span><span><strong>Authorized administrator.</strong> Student records and documents are confidential. Access only information needed to review applications.</span></div>
+            <div class="stats-grid admin-stats">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Awaiting review</span><span class="stat-icon peach" aria-hidden="true">◷</span></div><div class="stat-value" id="admin-pending">0</div><div class="stat-foot">Applications in the queue</div></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Verified</span><span class="stat-icon mint" aria-hidden="true">✓</span></div><div class="stat-value" id="admin-verified">0</div><div class="stat-foot">Approved for the next step</div></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Need more information</span><span class="stat-icon lilac" aria-hidden="true">↗</span></div><div class="stat-value" id="admin-more-info">0</div><div class="stat-foot">Follow-up requested</div></article>
+            </div>
+            <div class="panel application-panel">
+              <div class="panel-heading"><div><div class="eyebrow">REVIEW QUEUE</div><h2>Submitted applications</h2></div><span class="table-caption" id="queue-caption"></span></div>
+              <div id="admin-application-list"></div>
+            </div>
+            <div class="panel application-panel admin-document-panel">
+              <div class="panel-heading"><div><div class="eyebrow">DOCUMENT VERIFICATION</div><h2>Student documents</h2></div><span class="table-caption" id="admin-document-caption"></span></div>
+              <div id="admin-document-list"></div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <div id="reminder-popover" class="reminder-popover" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>
